@@ -1,35 +1,42 @@
+class ReorderInt:
+    def __init__(self, number, ascending=True):
+        """
+        Reorders an int into ascending or descending order
+        :param number: int
+        :param ascending: bool
+        return: int
+        """
+        self.number = list(str(number))
+        self.ascending = ascending
+        self.result = self.list_to_int(self.sort_list())
 
-def sort_list(listn, ascending=True):
-    """
-    defaults to ascending, else descending
-    :param listn: list
-    :param ascending: bool
-    :return: list
-    """
-    return_list = []
-    while listn:
-        compare_val = listn[0]  # first element in list
-        for x in listn:
-            if ascending:
-                if int(x) < int(compare_val):
-                    compare_val = x
-            else:
-                if int(x) > int(compare_val):
-                    compare_val = x
-        return_list.append(compare_val)
-        listn.remove(compare_val)
-    return return_list
+    def sort_list(self):
+        """
+        :return: list
+        """
+        return_list = []
+        while self.number:
+            compare_val = self.number[0]  # first element in list
+            for x in self.number:
+                if self.ascending:
+                    if int(x) < int(compare_val):
+                        compare_val = x
+                else:
+                    if int(x) > int(compare_val):
+                        compare_val = x
+            return_list.append(compare_val)
+            self.number.remove(compare_val)
+        return return_list
+
+    @staticmethod
+    def list_to_int(listn):
+        """
+        :param listn: list
+        :return:  int
+        """
+        return int("".join(x for x in listn))
 
 
-def list_to_int(listn):
-    """
-    feed it a list, returns an int (of the list items in order)
-    :param listn: list
-    :return: int
-    """
-    return int("".join(x for x in listn))
+#num = list(str(3432432413))
+#sorted_num = list_to_int(sort_list(num))
 
-
-num = list(str(3432432413))
-sorted_num = list_to_int(sort_list(num))
-print(sorted_num)
