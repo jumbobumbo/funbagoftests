@@ -2,11 +2,11 @@
 def number_chains(chain_number):
     """
     :param chain_number: int
-    :return:
+    :return: string
     """
     output_log = []
-
     chained_numbers = [chain_number]
+    
     for cn in chained_numbers:
         asc_chain_num = int("".join(sorted(str(cn))))
         desc_chain_num = int("".join(sorted(str(cn), reverse=True)))
