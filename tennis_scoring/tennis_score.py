@@ -47,8 +47,8 @@ class ScoreTennis:
         :param loser: str
         :return:
         """
-        print(f"{winner} wins!\n"
-              f"score:\n"
+        print(f"final score:\n"
+              f"{winner} wins!\n"
               f"{winner}: {self.score_dict[self.player_scores[winner]]}\n"
               f"{loser}: {self.score_dict[self.player_scores[loser]]}")
 
@@ -57,5 +57,13 @@ class ScoreTennis:
         prints out the current game score
         :return:
         """
+        print("current score:")
         for tennis_player in self.player_scores.keys():
             print(f"{tennis_player}: {self.score_dict[self.player_scores[tennis_player]]}")
+
+
+if __name__ == "__main__":
+    game = ScoreTennis()
+    game.point_change_verify_result("player_one")
+    for _ in range(4):
+        game.point_change_verify_result("player_two")
