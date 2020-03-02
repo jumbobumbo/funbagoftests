@@ -14,36 +14,48 @@ class ScoreTennis:
             "player_two": 0,
         }
 
-    def point_change_verify_result(self, player: str, add_point: bool = True):
+    def point_change_verify_result(self, player: str):
         """
         verifies what how points need to be changed for a player
         :param player: str
-        :param add_point: bool
         :return:
         """
         other_player = "player_two" if player == "player_one" else "player_one"
-        if add_point:
-            # check scores first
-            if self.player_scores[player] == 3 and self.player_scores[other_player] < 3:
-                self._win(player, other_player)
-            elif self.player_scores[player] == 5 and self.player_scores[other_player] == 4:
-                self._win(player, other_player)
-            else:
-                self.player_scores[player] += 1
-                if self.player_scores[player] == 3 and self.player_scores[other_player] == 3:
-                    self.player_scores[player] += 1
-                    self.player_scores[other_player] += 1
-                self._current_score()
-        elif not add_point:
-            self.player_scores[player] -= 1
+        # check the scores
+        # player is enough points ahead to just win
+        if self.player_scores[player] == 3 and self.player_scores[other_player] < 3:
+            self._win(player, other_player)
+        # player has one the advantage
+        elif self.player_scores[player] == 5 and self.player_scores[other_player] == 4:
+            self._win(player, other_player)
+        # player has lost the advantage
+        elif self.player_scores[player] == 4 and self.player_scores[other_player] == 5:
+            self.player_scores[other_player] -= 1
+            self._current_score()
+        else:
+            self.player_scores[player] += 1  # add the point
+            # both players are on 40 - deuce time
+            if self.player_scores[player] == 3 and self.player_scores[other_player] == 3:
+                for x in [player, other_player]:
+                    self.player_scores[x] += 1
             self._current_score()
 
     def _win(self, winner: str, loser: str):
+        """
+        prints out winning player
+        :param winner: str
+        :param loser: str
+        :return:
+        """
         print(f"{winner} wins!\n"
               f"score:\n"
               f"{winner}: {self.score_dict[self.player_scores[winner]]}\n"
               f"{loser}: {self.score_dict[self.player_scores[loser]]}")
 
     def _current_score(self):
+        """
+        prints out the current game score
+        :return:
+        """
         for tennis_player in self.player_scores.keys():
             print(f"{tennis_player}: {self.score_dict[self.player_scores[tennis_player]]}")
