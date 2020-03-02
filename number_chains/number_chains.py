@@ -1,12 +1,12 @@
 
-def number_chains(chain_number):
+def number_chains(chain_number: int) -> str:
     """
     :param chain_number: int
     :return: string
     """
     output_log = []
     chained_numbers = [chain_number]
-    
+
     for cn in chained_numbers:
         asc_chain_num = int("".join(sorted(str(cn))))
         desc_chain_num = int("".join(sorted(str(cn), reverse=True)))
@@ -19,4 +19,4 @@ def number_chains(chain_number):
                    f"Chain length {len(chained_numbers) - 1}"
 
 
-print(number_chains(1234))
+print(number_chains(123456789))

@@ -1,6 +1,6 @@
 
 
-def remove_duplicate_elem_from_lst(list1):
+def remove_duplicate_elem_from_lst(list1: list) -> list:
     """
     removes duplicate elements, returns amended list
     :param list1: list
@@ -13,7 +13,7 @@ def remove_duplicate_elem_from_lst(list1):
     return wanted_elements
 
 
-def remove_duplicate_elems_from_lst_with_dict(list1):
+def remove_duplicate_elems_from_lst_with_dict(list1: list) -> list:
     """
     utilises dict.fromkeys to be a lil cheeky (dict keys cannot have duplicates - does the job for us :O)
     :param list1: list

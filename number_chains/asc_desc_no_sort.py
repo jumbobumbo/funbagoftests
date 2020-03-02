@@ -1,5 +1,5 @@
 class ReorderInt:
-    def __init__(self, number, ascending=True):
+    def __init__(self, number: int, ascending: bool = True):
         """
         Reorders an int into ascending or descending order
         :param number: int
@@ -10,7 +10,7 @@ class ReorderInt:
         self.ascending = ascending
         self.result = self.list_to_int(self.sort_list())
 
-    def sort_list(self):
+    def sort_list(self) -> list:
         """
         :return: list
         """
@@ -29,7 +29,7 @@ class ReorderInt:
         return return_list
 
     @staticmethod
-    def list_to_int(listn):
+    def list_to_int(listn: list) -> int:
         """
         :param listn: list
         :return:  int
@@ -37,6 +37,5 @@ class ReorderInt:
         return int("".join(x for x in listn))
 
 
-#num = list(str(3432432413))
-#sorted_num = list_to_int(sort_list(num))
-
+num = ReorderInt(12344432).result
+print(num)
